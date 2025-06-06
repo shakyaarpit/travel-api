@@ -7,7 +7,7 @@ import Plan from "./modles/planSchema.js";
 import Booking from "./modles/bookingSchema.js";
 import jwt from "jsonwebtoken";
 import { LocalStorage }  from "node-localstorage"
-let PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8080;
 // import path from "path"
 const app = express();
 app.use(cors());
@@ -21,7 +21,7 @@ async function main() {
 
 //letning port
 app.listen(PORT, () => {
-  console.log(`port listning on ${PORT}` );
+  console.log(`Server running on port ${PORT}`);
 });
 
 //signin & login router
