@@ -8,6 +8,7 @@ import Booking from "./modles/bookingSchema.js";
 import jwt from "jsonwebtoken";
 import { LocalStorage }  from "node-localstorage"
 let PORT = process.env.PORT || 8080
+import path from "path"
 const app = express();
 app.use(cors());
 app.use(express.json());
