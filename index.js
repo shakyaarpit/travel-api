@@ -8,7 +8,7 @@ import Booking from "./modles/bookingSchema.js";
 import jwt from "jsonwebtoken";
 import { LocalStorage }  from "node-localstorage"
 let PORT = process.env.PORT || 8080
-import path from "path"
+// import path from "path"
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -188,9 +188,4 @@ app.delete("/bookingDelete/:id", async (req, res) => {
   let { id } = req.params;
   let bookingDel = await Booking.findByIdAndDelete({ _id: id });
   res.json("delete");
-});
-
-app.use(express.static(path.join(__dirname, 'frontend/build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
 });
