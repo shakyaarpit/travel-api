@@ -50,7 +50,7 @@ app.post("/login", async (req, res) => {
   if (newEmail) {
     const jwtToken = jwt.sign(
       { email: newEmail.email, _id: newEmail._id },
-      "secret",
+      process.env.secrat,
       { expiresIn: "24h" }
     );
     if (newEmail.password == password) {
