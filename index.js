@@ -11,15 +11,18 @@ import * as dotenv from 'dotenv';
 import { LocalStorage }  from "node-localstorage"
 
 const PORT = process.env.PORT || 8080;
+
+// console.log(Plan);
 // import path from "path"
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 //connect with mongoDb
+let MONGO_URI = process.env.MONGO_URI
 main().catch((err) => console.log(err));
 async function main() {
-  await mongoose.connect(process.env.MONGO_URI);
+  await mongoose.connect(MONGO_URI);
 }
 
 //letning port
@@ -123,6 +126,7 @@ app.delete("/blog/deleteBlog/:id", async (req, res) => {
 //plan details router
 app.get("/destination", async (req, res) => {
   let allPlace = await Plan.find();
+  console.log(allPlace);
   res.json(allPlace);
 });
 
