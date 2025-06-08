@@ -6,7 +6,10 @@ import Blog from "./modles/blogSchema.js";
 import Plan from "./modles/planSchema.js";
 import Booking from "./modles/bookingSchema.js";
 import jwt from "jsonwebtoken";
+import * as dotenv from 'dotenv';
+     dotenv.config();
 import { LocalStorage }  from "node-localstorage"
+
 const PORT = process.env.PORT || 8080;
 // import path from "path"
 const app = express();
@@ -16,7 +19,7 @@ app.use(express.json());
 //connect with mongoDb
 main().catch((err) => console.log(err));
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/travelData");
+  await mongoose.connect("mongodb+srv://arpitshakya9956:07112000@travel.v33sg8u.mongodb.net/travelNewDB");
 }
 
 //letning port
@@ -50,7 +53,7 @@ app.post("/login", async (req, res) => {
   if (newEmail) {
     const jwtToken = jwt.sign(
       { email: newEmail.email, _id: newEmail._id },
-      process.env.secrat,
+      "secrate",
       { expiresIn: "24h" }
     );
     if (newEmail.password == password) {
