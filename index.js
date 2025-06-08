@@ -19,7 +19,7 @@ app.use(express.json());
 //connect with mongoDb
 main().catch((err) => console.log(err));
 async function main() {
-  await mongoose.connect("mongodb+srv://arpitshakya9956:07112000@travel.v33sg8u.mongodb.net/travelNewDB");
+  await mongoose.connect(process.env.MONGO_URI);
 }
 
 //letning port
